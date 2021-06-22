@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage>
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rede social para empresas"),
+        title: Text("Rede social corporativa"),
         centerTitle: true,
         elevation: 5,
       ),

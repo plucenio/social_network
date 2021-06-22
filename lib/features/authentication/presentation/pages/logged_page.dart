@@ -20,7 +20,7 @@ class _LoggedPageState extends State<LoggedPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Logged"),
+        title: Text("Feed"),
         actions: [
           IconButton(
             tooltip: "Alterar senha",
@@ -92,22 +92,27 @@ class _LoggedPageState extends State<LoggedPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ElevatedButton(
-                    child: Text("Pacientes"),
+                    child: Text("Nova postagem"),
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 50),
+                  ElevatedButton(
+                    child: Text("Primeiro Andar"),
                     onPressed: () {},
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                    child: Text("Contratos"),
+                    child: Text("Enfermaria"),
                     onPressed: () {},
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                    child: Text("Calendario de atendimentos"),
+                    child: Text("Oncologia"),
                     onPressed: () {},
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                    child: Text("Profissionais"),
+                    child: Text("Neo natal"),
                     onPressed: () {},
                   ),
                 ],
