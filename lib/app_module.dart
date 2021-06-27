@@ -1,4 +1,6 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:social_network/features/authentication/presentation/cubit/login_cubit.dart';
 
 import 'features/authentication/data/datasources_interfaces/firebase_authentication_datasource.dart';
 import 'features/authentication/data/repositories/firebase_authentication_repository.dart';
@@ -24,12 +26,18 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
-      child: (_, __) => LoginPage(),
+      child: (context, args) => BlocProvider(
+        create: (_) => LoginCubit(),
+        child: LoginPage(),
+      ),
       transition: TransitionType.fadeIn,
     ),
     ChildRoute(
       CreateAccountPage.route,
-      child: (_, __) => CreateAccountPage(),
+      child: (context, args) => BlocProvider(
+        create: (_) => LoginCubit(),
+        child: CreateAccountPage(),
+      ),
       transition: TransitionType.fadeIn,
     ),
     ChildRoute(

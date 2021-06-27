@@ -67,6 +67,10 @@ class FirebaseAuthenticationRepository
     if (e.code.toLowerCase() == user_not_found) {
       return FirebaseAuthFailure(
           "Email não encontrado, você pode criar uma nova conta com este e-mail");
+    }
+    if (e.code.toLowerCase() == email_already_in_use) {
+      return FirebaseAuthFailure(
+          "Este email já tem uma conta vinculada, você pode solicitar um link para criar uma nova senha");
     } else {
       return FirebaseAuthFailure(e.message);
     }

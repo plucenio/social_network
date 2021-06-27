@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:social_network/features/authentication/domain/usecases/firebase_authentication_usecase.dart';
+import 'package:social_network/features/authentication/presentation/cubit/login_cubit.dart';
+import 'package:social_network/features/authentication/presentation/cubit/login_state.dart';
 
 class CreateAccountPage extends StatefulWidget {
   static String route = "/create_account";
@@ -16,6 +19,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   var surnameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -41,124 +45,115 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          TextFormField(
-                            controller: nameController,
-                            decoration: InputDecoration(
-                              icon: Icon(Icons.person),
-                              labelText: 'Nome',
-                              labelStyle: TextStyle(
-                                color: Theme.of(context).secondaryHeaderColor,
+                      child: BlocConsumer<LoginCubit, LoginState>(
+                        listener: (context, state) {
+                          if (state is ErrorState) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(state.message),
+                                backgroundColor: Colors.red,
                               ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor),
+                            );
+                          }
+                          if (state is LoadedState) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(state.message),
+                                backgroundColor: Colors.green,
                               ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          TextFormField(
-                            controller: surnameController,
-                            decoration: InputDecoration(
-                              icon: Icon(Icons.person),
-                              labelText: 'Sobrenome',
-                              labelStyle: TextStyle(
-                                color: Theme.of(context).secondaryHeaderColor,
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          TextFormField(
-                            controller: emailController,
-                            autovalidateMode: AutovalidateMode.always,
-                            decoration: InputDecoration(
-                              icon: Icon(Icons.email),
-                              labelText: 'Email',
-                              labelStyle: TextStyle(
-                                color: Theme.of(context).secondaryHeaderColor,
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor),
-                              ),
-                            ),
-                            validator: (String value) {
-                              return value.length > 0 &&
-                                      (!value.contains('@') ||
-                                          !value.contains('.com'))
-                                  ? 'Email inválido'
-                                  : null;
-                            },
-                          ),
-                          const SizedBox(height: 10),
-                          ElevatedButton(
-                            onPressed: () async {
-                              (await Modular.get<
-                                          IFirebaseAuthenticationUsecase>()
-                                      .createUserWithEmailAndPassword(
-                                          emailController.text,
-                                          "temporary_password"))
-                                  .fold(
-                                (l) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(l.message),
-                                      backgroundColor: Colors.red,
+                            );
+                          }
+                        },
+                        builder: (context, state) {
+                          if (state is LoadingState) {
+                            return Text('Loading');
+                          }
+                          return Form(
+                            key: _formKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                TextFormField(
+                                  controller: nameController,
+                                  decoration: InputDecoration(
+                                    icon: Icon(Icons.person),
+                                    labelText: 'Nome',
+                                    labelStyle: TextStyle(
+                                      color: Theme.of(context).primaryColor,
                                     ),
-                                  );
-                                },
-                                (r) async {
-                                  (await Modular.get<
-                                              IFirebaseAuthenticationUsecase>()
-                                          .sendPasswordResetEmail(r.user.email))
-                                      .fold(
-                                    (l) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(l.message),
-                                          backgroundColor: Colors.red,
-                                        ),
-                                      );
-                                    },
-                                    (r) async {
-                                      await ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                  "Um link foi enviado para o seu email."),
-                                              backgroundColor: Colors.green,
-                                            ),
-                                          )
-                                          .closed;
-                                      Modular.to.pushReplacementNamed("/");
-                                    },
-                                  );
-                                },
-                              );
-                            },
-                            child: Text("Criar conta"),
-                          ),
-                          const SizedBox(height: 10),
-                          ElevatedButton(
-                            onPressed: () {
-                              Modular.to.pushReplacementNamed(
-                                "/",
-                              );
-                            },
-                            child: Text("Voltar"),
-                          ),
-                        ],
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                TextFormField(
+                                  controller: surnameController,
+                                  decoration: InputDecoration(
+                                    icon: Icon(Icons.person),
+                                    labelText: 'Sobrenome',
+                                    labelStyle: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                TextFormField(
+                                  controller: emailController,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  decoration: InputDecoration(
+                                    icon: Icon(Icons.email),
+                                    labelText: 'Email',
+                                    labelStyle: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                  ),
+                                  validator: (String value) {
+                                    return value.isEmpty ||
+                                            (!value.contains('@') ||
+                                                !value.contains('.com'))
+                                        ? 'Email inválido'
+                                        : null;
+                                  },
+                                ),
+                                const SizedBox(height: 10),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      context.read<LoginCubit>().create(
+                                          emailController.text,
+                                          "temporary_password");
+                                    }
+                                  },
+                                  child: Text("Criar conta"),
+                                ),
+                                const SizedBox(height: 10),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Modular.to.pushReplacementNamed(
+                                      "/",
+                                    );
+                                  },
+                                  child: Text("Voltar"),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),

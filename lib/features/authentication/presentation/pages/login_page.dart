@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:social_network/features/authentication/domain/usecases/firebase_authentication_usecase.dart';
+import '../../domain/usecases/firebase_authentication_usecase.dart';
+import '../cubit/login_cubit.dart';
+import '../cubit/login_state.dart';
 import 'pages.dart';
 
 class LoginPage extends StatefulWidget {
@@ -100,138 +103,106 @@ class _LoginPageState extends State<LoginPage>
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            TextFormField(
-                              controller: emailController,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.email),
-                                labelText: 'Email',
-                                labelStyle: TextStyle(
-                                  color: Theme.of(context).primaryColor,
+                      child: BlocConsumer<LoginCubit, LoginState>(
+                          listener: (context, state) {
+                        if (state is ErrorState) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(state.message),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                        if (state is LoadedState) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(state.message),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        }
+                      }, builder: (context, state) {
+                        if (state is LoadingState) {
+                          return Text('Loading');
+                        }
+                        return Form(
+                          key: _formKey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              TextFormField(
+                                controller: emailController,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.email),
+                                  labelText: 'Email',
+                                  labelStyle: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor),
+                                  ),
                                 ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor),
+                                validator: (String value) {
+                                  return value.isEmpty ||
+                                          (!value.contains('@') ||
+                                              !value.contains('.com'))
+                                      ? 'Email inválido'
+                                      : null;
+                                },
+                              ),
+                              TextFormField(
+                                obscureText: true,
+                                controller: passwordController,
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.lock),
+                                  labelText: 'Senha',
+                                  labelStyle: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor),
+                                  ),
                                 ),
                               ),
-                              validator: (String value) {
-                                return value.isEmpty ||
-                                        (!value.contains('@') ||
-                                            !value.contains('.com'))
-                                    ? 'Email inválido'
-                                    : null;
-                              },
-                            ),
-                            TextFormField(
-                              obscureText: true,
-                              controller: passwordController,
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.lock),
-                                labelText: 'Senha',
-                                labelStyle: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor),
-                                ),
+                              const SizedBox(height: 10),
+                              ElevatedButton(
+                                  child: Text("Entrar"),
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      context.read<LoginCubit>().signIn(
+                                          emailController.text,
+                                          passwordController.text);
+                                    }
+                                  }),
+                              const SizedBox(height: 10),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  Modular.to.pushNamed(CreateAccountPage.route);
+                                },
+                                child: Text("Criar conta"),
                               ),
-                            ),
-                            const SizedBox(height: 10),
-                            ElevatedButton(
-                              onPressed: () async {
-                                if (_formKey.currentState.validate()) {
-                                  (await Modular.get<
-                                              IFirebaseAuthenticationUsecase>()
-                                          .signInWithEmailAndPassword(
-                                              emailController.text,
-                                              passwordController.text))
-                                      .fold(
-                                    (l) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(l.message),
-                                          backgroundColor: Colors.red,
-                                        ),
-                                      );
-                                    },
-                                    (r) {
-                                      Modular.to.pushReplacementNamed(
-                                        LoggedPage.route,
-                                      );
-                                    },
-                                  );
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "É necessário informar um email válido."),
-                                      backgroundColor: Colors.amber,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Text("Entrar"),
-                            ),
-                            const SizedBox(height: 10),
-                            ElevatedButton(
-                              onPressed: () async {
-                                Modular.to.pushNamed(CreateAccountPage.route);
-                              },
-                              child: Text("Criar conta"),
-                            ),
-                            const SizedBox(height: 10),
-                            ElevatedButton(
-                              onPressed: () async {
-                                if (_formKey.currentState.validate()) {
-                                  (await Modular.get<
-                                              IFirebaseAuthenticationUsecase>()
-                                          .sendPasswordResetEmail(
-                                              emailController.text))
-                                      .fold(
-                                    (l) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(l.message),
-                                          backgroundColor: Colors.red,
-                                        ),
-                                      );
-                                    },
-                                    (r) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                              "Um email para gerar uma nova senha foi enviado."),
-                                          backgroundColor: Colors.green,
-                                        ),
-                                      );
-                                    },
-                                  );
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "É necessário informar um email válido."),
-                                      backgroundColor: Colors.amber,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Text("Esqueci minha senha"),
-                            )
-                          ],
-                        ),
-                      ),
+                              const SizedBox(height: 10),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  if (_formKey.currentState.validate()) {
+                                    if (_formKey.currentState.validate()) {
+                                      context
+                                          .read<LoginCubit>()
+                                          .forget(emailController.text);
+                                    }
+                                  }
+                                },
+                                child: Text("Esqueci minha senha"),
+                              )
+                            ],
+                          ),
+                        );
+                      }),
                     ),
                   ),
                 ),
