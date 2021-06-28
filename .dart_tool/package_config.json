@@ -8,6 +8,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "bloc",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/bloc-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0",
       "packageUri": "lib/",
@@ -52,6 +58,12 @@
     {
       "name": "dartz",
       "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/dartz-0.10.0-nullsafety.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "equatable",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -112,6 +124,12 @@
     {
       "name": "flutter",
       "rootUri": "file:///Users/plucenio/fvm/versions/stable/packages/flutter",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_bloc",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/flutter_bloc-7.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -182,6 +200,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
       "packageUri": "lib/",
@@ -238,6 +262,12 @@
     {
       "name": "process",
       "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/process-4.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dartlang.org/provider-5.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -326,7 +356,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-22T21:02:52.027965Z",
+  "generated": "2021-06-27T04:31:07.049126Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }
