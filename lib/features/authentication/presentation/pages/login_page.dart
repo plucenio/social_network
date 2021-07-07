@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../domain/usecases/firebase_authentication_usecase.dart';
 import '../cubit/login_cubit.dart';
 import '../cubit/login_state.dart';
 import 'pages.dart';

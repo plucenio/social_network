@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:social_network/features/authentication/domain/usecases/firebase_authentication_usecase.dart';
 import 'package:social_network/features/authentication/presentation/cubit/login_cubit.dart';
 import 'package:social_network/features/authentication/presentation/cubit/login_state.dart';
 
