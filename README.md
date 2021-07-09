@@ -1,4 +1,4 @@
-# social_network
+# social network
 
 A new Flutter project.
 
