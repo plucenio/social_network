@@ -8,7 +8,7 @@ import 'features/authentication/domain/repositories_interfaces/firebase_authenti
 import 'features/authentication/domain/usecases/firebase_authentication_usecase.dart';
 import 'features/authentication/external/firebase_authentication_datasource.dart';
 import 'features/authentication/presentation/pages/create_account_page.dart';
-import 'features/authentication/presentation/pages/logged_page.dart';
+import 'features/main/presentation/pages/logged_page.dart';
 import 'features/authentication/presentation/pages/login_page.dart';
 
 class AppModule extends Module {

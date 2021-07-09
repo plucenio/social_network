@@ -29,6 +29,14 @@ class _LoginPageState extends State<LoginPage>
   }
 
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var factor = 1.1;
     var sizeAnimation =
@@ -113,11 +121,8 @@ class _LoginPageState extends State<LoginPage>
                           );
                         }
                         if (state is LoadedState) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(state.message),
-                              backgroundColor: Colors.green,
-                            ),
+                          Modular.to.pushReplacementNamed(
+                            LoggedPage.route,
                           );
                         }
                       }, builder: (context, state) {
