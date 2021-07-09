@@ -97,11 +97,6 @@ class _LoggedPageState extends State<LoggedPage> {
                   ),
                   const SizedBox(height: 30),
                   ElevatedButton(
-                    child: Text("Primeiro Andar"),
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
                     child: Text("Enfermaria"),
                     onPressed: () {},
                   ),
