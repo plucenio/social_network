@@ -65,7 +65,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         },
                         builder: (context, state) {
                           if (state is LoadingState) {
-                            return Text('Loading');
+                            return Text('Loading...');
                           }
                           return Form(
                             key: _formKey,
