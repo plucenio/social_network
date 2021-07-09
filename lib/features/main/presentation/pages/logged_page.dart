@@ -95,7 +95,7 @@ class _LoggedPageState extends State<LoggedPage> {
                     child: Text("Nova postagem"),
                     onPressed: () {},
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 30),
                   ElevatedButton(
                     child: Text("Primeiro Andar"),
                     onPressed: () {},
