@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular/flutter_modular.dart' hide ModularWatchExtension;
 import 'package:social_network/features/authentication/presentation/cubit/login_cubit.dart';
 import 'package:social_network/features/authentication/presentation/cubit/login_state.dart';
 
 class CreateAccountPage extends StatefulWidget {
   static String route = "/create_account";
-  CreateAccountPage({Key key}) : super(key: key);
+  CreateAccountPage({Key? key}) : super(key: key);
 
   @override
   _CreateAccountPageState createState() => _CreateAccountPageState();
@@ -121,10 +121,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                               Theme.of(context).primaryColor),
                                     ),
                                   ),
-                                  validator: (String value) {
-                                    return value.isEmpty ||
-                                            (!value.contains('@') ||
-                                                !value.contains('.com'))
+                                  validator: (String? value) {
+                                    return (value ?? '').isEmpty ||
+                                            (!(value ?? '').contains('@') ||
+                                                !(value ?? '').contains('.com'))
                                         ? 'Email inválido'
                                         : null;
                                   },
@@ -132,7 +132,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                 const SizedBox(height: 10),
                                 ElevatedButton(
                                   onPressed: () async {
-                                    if (_formKey.currentState.validate()) {
+                                    if (_formKey.currentState!.validate()) {
                                       context.read<LoginCubit>().create(
                                           emailController.text,
                                           "temporary_password");

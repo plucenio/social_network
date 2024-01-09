@@ -72,7 +72,7 @@ class FirebaseAuthenticationRepository
       return FirebaseAuthFailure(
           "Este email já tem uma conta vinculada, você pode solicitar um link para criar uma nova senha");
     } else {
-      return FirebaseAuthFailure(e.message);
+      return FirebaseAuthFailure(e.message!);
     }
   }
 }

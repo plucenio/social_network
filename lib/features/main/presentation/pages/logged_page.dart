@@ -4,7 +4,7 @@ import 'package:social_network/features/authentication/domain/usecases/firebase_
 
 class LoggedPage extends StatefulWidget {
   static String route = "/logged";
-  LoggedPage({Key key}) : super(key: key);
+  LoggedPage({Key? key}) : super(key: key);
 
   @override
   _LoggedPageState createState() => _LoggedPageState();

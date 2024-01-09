@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "370276479498",
+    "project_id": "proof-of-concept-de7fe",
+    "storage_bucket": "proof-of-concept-de7fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370276479498:android:502808c3284d7575b8a5f3",
+        "android_client_info": {
+          "package_name": "com.example.social_network"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370276479498-3p461r1eq1em40cues1eqk177d21vnpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwWe8O1T0yINqpjOvlCP9DuyLRrrf8knQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370276479498-3p461r1eq1em40cues1eqk177d21vnpr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "370276479498-gind8rdak32k72tnv1u26vh70t3h2klq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.coin.consolidate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

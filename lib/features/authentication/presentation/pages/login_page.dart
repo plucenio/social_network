@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular/flutter_modular.dart' hide ModularWatchExtension;
 import '../cubit/login_cubit.dart';
 import '../cubit/login_state.dart';
 import 'pages.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-  AnimationController animationController;
+  late AnimationController animationController;
 
   @override
   void initState() {
@@ -83,13 +83,13 @@ class _LoginPageState extends State<LoginPage>
                                   style: TextStyle(
                                       fontSize: Theme.of(context)
                                               .textTheme
-                                              .headline5
-                                              .fontSize *
+                                              .headlineSmall!
+                                              .fontSize! *
                                           sizeTextAnimation.value),
                                 ),
                               ),
-                              height: sizeAnimation.value.height,
-                              width: sizeAnimation.value.width,
+                              height: sizeAnimation.value!.height,
+                              width: sizeAnimation.value!.width,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.white,
@@ -150,10 +150,10 @@ class _LoginPageState extends State<LoginPage>
                                         color: Theme.of(context).primaryColor),
                                   ),
                                 ),
-                                validator: (String value) {
-                                  return value.isEmpty ||
-                                          (!value.contains('@') ||
-                                              !value.contains('.com'))
+                                validator: (String? value) {
+                                  return (value ?? '').isEmpty ||
+                                          (!(value ?? '').contains('@') ||
+                                              !(value ?? '').contains('.com'))
                                       ? 'Email inválido'
                                       : null;
                                 },
@@ -177,7 +177,7 @@ class _LoginPageState extends State<LoginPage>
                               ElevatedButton(
                                   child: Text("Entrar"),
                                   onPressed: () async {
-                                    if (_formKey.currentState.validate()) {
+                                    if (_formKey.currentState!.validate()) {
                                       context.read<LoginCubit>().signIn(
                                           emailController.text,
                                           passwordController.text);
@@ -193,8 +193,8 @@ class _LoginPageState extends State<LoginPage>
                               const SizedBox(height: 10),
                               ElevatedButton(
                                 onPressed: () async {
-                                  if (_formKey.currentState.validate()) {
-                                    if (_formKey.currentState.validate()) {
+                                  if (_formKey.currentState!.validate()) {
+                                    if (_formKey.currentState!.validate()) {
                                       context
                                           .read<LoginCubit>()
                                           .forget(emailController.text);
