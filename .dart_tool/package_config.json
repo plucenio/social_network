@@ -3,9 +3,9 @@
   "packages": [
     {
       "name": "_flutterfire_internals",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.16",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.25",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.2"
     },
     {
       "name": "async",
@@ -15,13 +15,13 @@
     },
     {
       "name": "auto_injector",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/auto_injector-2.0.2",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/auto_injector-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "bloc",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/bloc-8.1.2",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/bloc-8.1.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -81,31 +81,31 @@
     },
     {
       "name": "ffi",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/ffi-2.1.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/ffi-2.1.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "firebase_auth",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_auth-4.16.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_auth-4.17.8",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "firebase_auth_platform_interface",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-7.0.9",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-7.1.8",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "firebase_auth_web",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.13",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_auth_web-5.9.8",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.2"
     },
     {
       "name": "firebase_core",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_core-2.24.2",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_core-2.27.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -117,9 +117,15 @@
     },
     {
       "name": "firebase_core_web",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_core_web-2.10.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/firebase_core_web-2.11.5",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "fixnum",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/fixnum-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "flutter",
@@ -129,7 +135,7 @@
     },
     {
       "name": "flutter_bloc",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.3",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -153,13 +159,13 @@
     },
     {
       "name": "google_fonts",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/google_fonts-6.1.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/google_fonts-6.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/http-1.1.2",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/http-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -176,20 +182,38 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "matcher",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/matcher-0.12.16",
+      "name": "leak_tracker",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/leak_tracker-10.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "leak_tracker_flutter_testing",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "leak_tracker_testing",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/leak_tracker_testing-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "matcher",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/matcher-0.12.16+1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "material_color_utilities",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/material_color_utilities-0.5.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/meta-1.10.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/meta-1.11.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -207,9 +231,9 @@
     },
     {
       "name": "path",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/path-1.8.3",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "path_provider",
@@ -225,9 +249,9 @@
     },
     {
       "name": "path_provider_foundation",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.1",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.2",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "path_provider_linux",
@@ -261,7 +285,7 @@
     },
     {
       "name": "provider",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/provider-6.1.1",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/provider-6.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -282,6 +306,12 @@
       "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "sprintf",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/sprintf-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "stack_trace",
@@ -321,9 +351,9 @@
     },
     {
       "name": "uuid",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/uuid-3.0.7",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/uuid-4.3.3",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "vector_math",
@@ -332,16 +362,22 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "vm_service",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/vm_service-13.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "web",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/web-0.3.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/web-0.4.2",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/win32-5.2.0",
+      "rootUri": "file:///Users/plucenio/.pub-cache/hosted/pub.dev/win32-5.3.0",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "xdg_directories",
@@ -356,7 +392,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2024-01-09T18:29:20.670665Z",
+  "generated": "2024-03-12T12:44:49.536851Z",
   "generator": "pub",
-  "generatorVersion": "3.2.3"
+  "generatorVersion": "3.3.1"
 }
